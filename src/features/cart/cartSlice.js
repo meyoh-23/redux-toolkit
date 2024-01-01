@@ -24,6 +24,12 @@ const cartSlice = createSlice({
             state.cartItems = [];
         },
         removeItem: (state, action) => {
+            // action has 2 properties 
+                // the type, which for this case will be  'cart/RemoveItem'
+                // the entire cartSlice has been labeled as 'cart' in the store.js file
+            
+                // the other property of the action i the payload, which for this case is the id.
+                // this particular function will be dispatched for a particular cartItem, so it will access the respective id
             const itemId = action.payload;
             state.cartItems = state.cartItems.filter((item)=>item.id !== itemId)
         },
