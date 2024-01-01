@@ -14,7 +14,7 @@ function CartContainer() {
             </header>
         </section>
     }
-  return (
+    return (
     <section className="cart">
         <header>
             <h2>your bag</h2>
