@@ -41,7 +41,7 @@ function CartContainer() {
             >clear cart</button>
         </footer>
     </section>
-  )
+)
 }
 
 export default CartContainer;
