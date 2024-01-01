@@ -33,11 +33,11 @@ const cartSlice = createSlice({
             const itemId = action.payload;
             state.cartItems = state.cartItems.filter((item)=>item.id !== itemId)
         },
-        increase: (state, { payload }) => {
+        increase: (state, { payload } /* payload has been destructured from action */) => {
             const cartItem = state.cartItems.find((item) => item.id === payload.id);
             cartItem.amount = cartItem.amount + 1;
         },
-        decrease: (state, { payload }) => {
+        decrease: (state, { payload } /* payload has been destructure from the ction */) => {
             const cartItem = state.cartItems.find((item) =>item.id === payload.id );
             cartItem.amount = cartItem.amount - 1;
         },
