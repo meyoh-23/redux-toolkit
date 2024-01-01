@@ -37,8 +37,9 @@ function CartContainer() {
                 </h4>
             </div>
             <button className="btn clear-btn"
-            onClick={() => dispatch(openModal()) }
-            >clear cart</button>
+            onClick={() => dispatch(openModal()) }>
+                clear cart
+            </button>
         </footer>
     </section>
 )
