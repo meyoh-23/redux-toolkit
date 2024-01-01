@@ -14,6 +14,7 @@ function App() {
     dispatch(calculateTotals());
   },[cartItems]);
 
+  // fetch cartItems on initial rendering
   useEffect(()=> {
     dispatch(getCartItems())
   }, []);
