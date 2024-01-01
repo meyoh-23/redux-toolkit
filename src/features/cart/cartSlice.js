@@ -9,6 +9,16 @@ const initialState = {
     total: 0,
     isLoading: true,
 }
+/* NOTES */
+/* 
+    - the function 'createSyncThink' takes in 2 parameters
+    - the type, from the action object that also contains the payload.
+    - an asynchronous/ a function that returns a promise as the call-back function.
+    - the callback function passed to it returns  lifecylce action, namely: 
+        - pendding,
+        - fulfilled,
+        - rejected
+*/
 
 export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
     return fetch(url)
