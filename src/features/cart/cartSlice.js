@@ -20,6 +20,7 @@ const initialState = {
         - rejected
 */
 
+// the function has already been exported hence no export has been done in the cartSlice.actions, unlike other reducers
 export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
     return fetch(url)
     .then(resp => resp.json())
