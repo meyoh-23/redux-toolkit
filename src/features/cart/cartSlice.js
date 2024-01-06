@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
+import { openModal } from "../modal/modalSlice";
 //import cartItems from "../../cartItems";
 
-const url = 'https://course-api.com/react-useReducer-cart-project';
+const url = 'https://course-api.com/react-useReducer-cart-projects';
 
 const initialState = {
     cartItems: [],
@@ -21,10 +23,29 @@ const initialState = {
 */
 
 // the function has already been exported hence no export has been done in the cartSlice.actions, unlike other reducers
-export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
+// the promise Style
+/* export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
     return fetch(url)
     .then(resp => resp.json())
     .catch((error) =>console.log(error.message));
+}) */
+
+// passing async functions
+
+export const getCartItems = createAsyncThunk("cart/getCartItems", async (_, thunkAPI) => {
+    // thinkAPI has to be passed as the second variable to the actionCreator function;
+
+    try {
+        const resp = await axios(url);
+        console.log(thunkAPI);
+        console.log(resp); // to check the structure of the resp
+        console.log(resp.data);; // to check the data fetched
+        console.log(thunkAPI.getState());
+        // thunkAPI.dispatch(openModal()) // opens the modal in the UI
+        return resp.data; // when using axios, data is located in the resp.data property
+    } catch (error) {
+        return thunkAPI.rejectWithValue("Something Went Wrong!");
+    }
 })
 
 const cartSlice = createSlice({ 
@@ -76,8 +97,9 @@ const cartSlice = createSlice({
             state.isLoading = false;
             state.cartItems = action.payload;
         },
-        [getCartItems.rejected]: (state) => {
-            state.isLoading = false
+        [getCartItems.rejected]: (state, action) => {
+            state.isLoading = false;
+            console.log(action);
         },
     },
 })
