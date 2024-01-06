@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(calculateTotals());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[cartItems]);
 
   // fetch cartItems on initial rendering
