@@ -47,12 +47,12 @@ const cartSlice = createSlice({
             console.log(action.payload);
             state.cartItems = state.cartItems.filter((item)=>item.id !== itemId)
         },
-        increase: (state, { payload, type } /* payload has been destructured from action */) => {
+        increase: (state, { payload, type } /* payload and type has been destructured from action */) => {
             const cartItem = state.cartItems.find((item) => item.id === payload.id);
             cartItem.amount = cartItem.amount + 1;
             console.log(type, payload);
         },
-        decrease: (state, { payload } /* payload has been destructure from the ction */) => {
+        decrease: (state, { payload } /* payload and type has been destructure from the ction */) => {
             const cartItem = state.cartItems.find((item) =>item.id === payload.id );
             cartItem.amount = cartItem.amount - 1;
         },
