@@ -41,6 +41,9 @@ function CartContainer() {
                 clear cart
             </button>
         </footer>
+        {/* <button className="btn clear-btn">
+            Tesst
+        </button> */}
     </section>
 )
 }
