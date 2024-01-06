@@ -10,6 +10,7 @@ const initialState = {
     amount: 4,
     total: 0,
     isLoading: true,
+    isError: false,
 }
 /* NOTES */
 /* 
@@ -92,15 +93,19 @@ const cartSlice = createSlice({
         builder
         .addCase(getCartItems.pending, (state) => {
             state.isLoading = true;
+            state.isError = null;
         })
         .addCase(getCartItems.fulfilled, (state, action) => {
             console.log(action);
             state.isLoading = false;
+            state.isError = false; 
             state.cartItems = action.payload;
         })
         .addCase(getCartItems.rejected, (state, action) => {
             state.isLoading = false;
-            console.log(action);
+            state.isError  = true;
+            console.log(action.payload);
+            console.log(action.type);
         })
     },
 })
